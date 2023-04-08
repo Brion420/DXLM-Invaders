@@ -422,7 +422,7 @@ function animate() {
           x: 0,
           y: -10
         },
-        color: '#0CFF00'
+        color: '#F3C616'
       })
     )
   }

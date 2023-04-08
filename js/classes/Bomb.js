@@ -63,15 +63,30 @@ class Bomb {
     constructor({ position, velocity }) {
       this.position = position
       this.velocity = velocity
-      this.radius = 15
+      this.radius = 40
+  
+      const image = new Image()
+      image.src = './img/powerup.png'
+      image.onload = () => {
+        const scale = .75
+        this.image = image
+        this.width = image.width * scale
+        this.height = image.height * scale
+        this.position = {
+          x: position.x,
+          y: position.y
+        }
+      }
     }
   
     draw() {
-      c.beginPath()
-      c.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2)
-      c.fillStyle = '#0CFF00'
-      c.fill()
-      c.closePath()
+      c.drawImage(
+        this.image,
+        this.position.x,
+        this.position.y,
+        this.width,
+        this.height
+      )
     }
   
     update() {
