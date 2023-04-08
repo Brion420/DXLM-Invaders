@@ -22,8 +22,8 @@ class Grid {
           this.invaders.push(
             new Invader({
               position: {
-                x: x * 30,
-                y: y * 30
+                x: x * 35,
+                y: y * 35
               }
             })
           )

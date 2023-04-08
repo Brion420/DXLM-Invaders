@@ -43,7 +43,7 @@ function randomBetween(min, max) {
             y: (Math.random() - 0.5) * 2
           },
           radius: Math.random() * 3,
-          color: color || '#F3C616',
+          color: color || '#FF7000',
           fades
         })
       )
