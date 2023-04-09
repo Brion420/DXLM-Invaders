@@ -495,3 +495,33 @@ addEventListener('keyup', ({ key }) => {
       break
   }
 })
+
+canvas.addEventListener('touchstart', onTouchStart)
+canvas.addEventListener('touchmove', onTouchMove)
+canvas.addEventListener('touchend', onTouchEnd)
+
+
+function onTouchStart(event) {
+
+  const touch = event.touches[0]
+  const touchX = touch.pageX - canvas.offsetLeft
+  const touchY = touch.pageY - canvas.offsetTop
+  
+
+  player.fireProjectile({ targetX: touchX, targetY: touchY })
+}
+
+function onTouchMove(event) {
+
+  const touch = event.touches[0]
+  const touchX = touch.pageX - canvas.offsetLeft
+  const touchY = touch.pageY - canvas.offsetTop
+  
+
+  player.move({ targetX: touchX, targetY: touchY })
+}
+
+function onTouchEnd(event) {
+
+  player.stop()
+}
