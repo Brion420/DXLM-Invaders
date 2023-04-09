@@ -2,8 +2,8 @@ const scoreEl = document.querySelector('#scoreEl')
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
 
-canvas.width = 1024
-canvas.height = 576
+canvas.width = innerWidth
+canvas.height = innerHeight
 
 let player = new Player()
 let projectiles = []
@@ -496,19 +496,16 @@ addEventListener('keyup', ({ key }) => {
   }
 })
 
+
 canvas.addEventListener('touchstart', onTouchStart)
 canvas.addEventListener('touchmove', onTouchMove)
 canvas.addEventListener('touchend', onTouchEnd)
 
-
 function onTouchStart(event) {
-
   const touch = event.touches[0]
   const touchX = touch.pageX - canvas.offsetLeft
   const touchY = touch.pageY - canvas.offsetTop
-  
-
-  player.fireProjectile({ targetX: touchX, targetY: touchY })
+    player.fireProjectile({ targetX: touchX, targetY: touchY })
 }
 
 function onTouchMove(event) {
