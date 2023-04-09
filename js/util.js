@@ -10,7 +10,6 @@ function randomBetween(min, max) {
     scoreLabel.style.top = object.position.y + 'px'
     scoreLabel.style.left = object.position.x + 'px'
     scoreLabel.style.userSelect = 'none'
-    scoreLabel.style.pointerEvents = 'none'
     document.querySelector('#parentDiv').appendChild(scoreLabel)
   
     gsap.to(scoreLabel, {
