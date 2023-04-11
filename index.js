@@ -20,6 +20,12 @@ let keys = {
   d: {
     pressed: false
   },
+  ArrowLeft: {
+    pressed: false
+  },
+  ArrowRight: {
+    pressed: false
+  },
   space: {
     pressed: false
   }
@@ -52,6 +58,12 @@ function init() {
       pressed: false
     },
     d: {
+      pressed: false
+    },
+    ArrowLeft: {
+      pressed: false
+    },
+    ArrowRight: {
       pressed: false
     },
     space: {
@@ -90,7 +102,7 @@ function init() {
 
 function endGame() {
   console.log('you lose')
-  audio.gameOver.play()
+   audio.gameOver.play()
 
   // Makes player disappear
   setTimeout(() => {
@@ -382,11 +394,11 @@ function animate() {
     } // end looping over grid.invaders
   })
 
-  if (keys.a.pressed && player.position.x >= 0) {
+  if (keys.a.pressed || keys.ArrowLeft.pressed && player.position.x >= 0) {
     player.velocity.x = -7
     player.rotation = -0.15
   } else if (
-    keys.d.pressed &&
+    keys.d.pressed || keys.ArrowRight.pressed &&
     player.position.x + player.width <= canvas.width
   ) {
     player.velocity.x = 7
@@ -457,6 +469,12 @@ addEventListener('keydown', ({ key }) => {
     case 'd':
       keys.d.pressed = true
       break
+    case 'ArrowLeft':
+        keys.ArrowLeft.pressed = true
+        break
+    case 'ArrowRight':
+        keys.ArrowRight.pressed = true
+        break
     case ' ':
       if (keys.space.pressed) return
       keys.space.pressed = true
@@ -489,6 +507,12 @@ addEventListener('keyup', ({ key }) => {
     case 'd':
       keys.d.pressed = false
       break
+      case 'ArrowLeft':
+        keys.ArrowLeft.pressed = false
+        break
+      case 'ArrowRight':
+        keys.ArrowRight.pressed = false
+        break
     case ' ':
       keys.space.pressed = false
 
