@@ -496,6 +496,7 @@ function mouseUp(event) {
    }
 }
 function whileMouseDown() {
+  if (game.over) return
   shoot();
 }
 
