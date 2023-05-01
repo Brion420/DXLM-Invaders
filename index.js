@@ -56,9 +56,6 @@ function init() {
     },
     space: {
       pressed: false
-    },
-    mouse: {
-      pressed: false
     }
   }
 
