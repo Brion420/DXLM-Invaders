@@ -484,6 +484,8 @@ addEventListener("mousedown", mouseDown);
 addEventListener("mouseup", mouseUp);
 var mousedownID = -1;
 function mouseDown(event) {
+  if (game.over) return
+
   if(mousedownID == -1)  //Prevent multimple loops
      mousedownID = setInterval(whileMouseDown, 150); //150-200 seems reasonable
 }
@@ -494,6 +496,7 @@ function mouseUp(event) {
    }
 }
 function whileMouseDown() {
+  if (game.over) return
   shoot();
 }
 
