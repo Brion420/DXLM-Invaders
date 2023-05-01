@@ -56,6 +56,9 @@ function init() {
     },
     space: {
       pressed: false
+    },
+    mouse: {
+      pressed: false
     }
   }
 
@@ -406,7 +409,7 @@ function animate() {
   }
 
   if (
-    keys.space.pressed &&
+    (keys.space.pressed || mousedownID != -1) &&
     player.powerUp === 'MachineGun' &&
     frames % 2 === 0 &&
     !game.over
@@ -458,25 +461,10 @@ addEventListener('keydown', ({ key }) => {
       keys.d.pressed = true
       break
     case ' ':
-      if (keys.space.pressed) return
+      if (keys.space.pressed) return //attempted removal causes invaders to raipidly fall - TODO
       keys.space.pressed = true
-
       if (player.powerUp === 'MachineGun') return
-
-      audio.shoot.play()
-      projectiles.push(
-        new Projectile({
-          position: {
-            x: player.position.x + player.width / 2,
-            y: player.position.y
-          },
-          velocity: {
-            x: 0,
-            y: -10
-          }
-        })
-      )
-
+      shoot();
       break
   }
 })
@@ -491,7 +479,41 @@ addEventListener('keyup', ({ key }) => {
       break
     case ' ':
       keys.space.pressed = false
-
       break
   }
 })
+
+addEventListener("mousedown", mouseDown);
+addEventListener("mouseup", mouseUp);
+var mousedownID = -1;
+function mouseDown(event) {
+  if(mousedownID == -1)  //Prevent multimple loops
+     mousedownID = setInterval(whileMouseDown, 150); //150-200 seems reasonable
+}
+function mouseUp(event) {
+   if(mousedownID != -1) {  //Only stop if exists
+     clearInterval(mousedownID);
+     mousedownID = -1;
+   }
+}
+function whileMouseDown() {
+  shoot();
+}
+
+function shoot() {
+
+  audio.shoot.play()
+  projectiles.push(
+    new Projectile({
+      position: {
+        x: player.position.x + player.width / 2,
+        y: player.position.y
+      },
+      velocity: {
+        x: 0,
+        y: -10
+      }
+    })
+  )
+
+}

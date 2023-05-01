@@ -1,130 +1,54 @@
-<style>
-    body {
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: black;
-      font-family: sans-serif;
-      font-size: 14px;
-    }
-
-  </style>
-  
-  <div style="position: relative" id="parentDiv">
-    <p
-      id="scoreContainer"
-      style="
-        position: absolute;
-        z-index: 10;
-        color: white;
-        left: 10px;
-        top: 10px;
-        margin: 0;
-        display: none;
-      "
-    >
+<head>
+  <link rel="stylesheet" type="text/css" href="./styles/invaders.css" />
+</head>
+<body>
+  <div id="scoreParentDiv">
+    <p id="scoreContainer">
       <span>Score:</span> <span id="scoreEl">0</span>
     </p>
     <canvas></canvas>
+    <!-- start screen -->
     <!-- background container -->
-    <div
-      id="startScreen"
-      style="
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: url('./img/startScreenBackground.png');
-        z-index: 20;
-        background-size: contain;
-        background-repeat: no-repeat;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      "
-    >
-      <div style="text-align: center">
-        <h1 style="color: white">Invaders</h1>
-  
+    <div id="startScreen">
+      <div class="containerDiv">
+        <!-- title -->
+        <h1 id="title">Invaders</h1>
         <!-- button -->
-        <div
-          id="startButton"
-          style="cursor: pointer; position: relative; display: inline-block"
-        >
+        <div id="startButton">
           <img src="./img/button.png" alt="Start Button" />
-          <span
-            style="
-              position: absolute;
-              color: white;
-              top: 50%;
-              transform: translate(-50%, -50%);
-              left: 50%;
-            "
-            >Start</span
-          >
+          <span id="startSpan">Start</span>
         </div>
       </div>
     </div>
     <!-- restart screen -->
     <!-- background container -->
-    <div
-      id="restartScreen"
-      style="
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: url('./img/startScreenBackground.png');
-        z-index: 20;
-        background-size: contain;
-        background-repeat: no-repeat;
-        display: none;
-        align-items: center;
-        justify-content: center;
-      "
-    >
-      <div style="text-align: center">
-        <h1 style="color: white; font-size: 24px">Game Over</h1>
-        <p style="color: white; margin: 0">Score</p>
-        <h1 id="finalScore" style="color: white; margin-top: 0; font-size: 42px">
-        </h1>
-
-          
+    <div id="restartScreen">
+      <div class="containerDiv">
+        <h1 id="gameOver">Game Over</h1>
+        <p id="restartScreenScore">Score</p>
+        <h1 id="finalScore"></h1>
         <!-- button -->
-        <div
-          id="restartButton"
-          style="cursor: pointer; position: relative; display: inline-block"
-        >
+        <div id="restartButton">
           <img src="./img/button.png" alt="Restart Button" />
-          <span
-            style="
-              position: absolute;
-              color: white;
-              top: 50%;
-              transform: translate(-50%, -50%);
-              left: 50%;
-            "
-            >Restart</span
-          >
+          <span id="restartSpan">Restart</span>
         </div>
       </div>
     </div>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
-      integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
+
+  <!-- SCRIPTS -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
+    integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
     ></script>
-    <script
+  <script
     src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
     integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
-  ></script>
-  
+    ></script>
+    
     <script src="./audio.js"></script>
     <script src="./js/util.js"></script>
     <script src="./js/classes/Player.js"></script>
@@ -136,3 +60,4 @@
     <script src="./js/classes/Bomb.js"></script>
     <script src="./index.js"></script>
   </div>
+</body>
